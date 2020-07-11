@@ -5,7 +5,7 @@ var fs = require("fs");
 var path = require("path");
 
 //Need a db directory and pathway?
-
+const database = path.resolve(__dirname, "../db");
 
 // Will I need to start the counter with a variable?? 
 // let idCounter or let idNumber =1;  ???
