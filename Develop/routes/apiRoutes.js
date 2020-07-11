@@ -55,10 +55,39 @@ module.exports = function (app) {
 
 
 
-    //API DELETE
+    //API DELETE request for the notes in my db file
+    app.delete("/api/notes/:id", function (req, res) {
+        //array variable
+        let notesObject = [];
 
+        //Use the data variable similar to POST
+        let data = fs.readFileSync(path.resolve(database, "db.json"), "utf8");
+        notesObject = JSON.parse(data);
 
+        //variable to begin the index to track the note that is set to be deleted?
+        noteIndex = 0;
+        //Need a for loop to loop through the array 
+        for (var i = 0; i < notesObject.length; i++) {
+            if (notesObject[i].id === parseInt(req.params.id)) {
+                noteIndex = i;
+                break;
+            }
+        }
+        //splice for the note to delete 
+        notesObject.splice(noteIndex, 1);
 
-}
+        //Need to update the db.json
+        fs.writeFileSync(
+            path.resolve(database, "db.json"),
+            JSON.stringify(notesObject),
+            function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            }
+        );
+        res.json(true);
+    });
+};
 
 
