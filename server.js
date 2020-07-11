@@ -14,11 +14,9 @@ app.use(express.json());
 // import the webiste's style
 app.use(express.static("Develop/public"));
 
-
-
-
-
-
+//Need to point the server to teh route files 
+require("./Develop/routes/apiRoutes")(app);
+require("./Develop/routes/htmlRoutes")(app);
 
 
 app.listen(PORT, function () {
