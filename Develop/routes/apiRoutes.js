@@ -48,10 +48,10 @@ module.exports = function (app) {
                 }
             }
         );
-
         //Need to return the new note and then increase the counter by 1 for special id purpose 
-
-    })
+        res.json(newNoteObject);
+        idCounter += 1;
+    });
 
 
 
