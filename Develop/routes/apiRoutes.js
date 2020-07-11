@@ -65,7 +65,7 @@ module.exports = function (app) {
         notesObject = JSON.parse(data);
 
         //variable to begin the index to track the note that is set to be deleted?
-        noteIndex = 0;
+        let noteIndex = 0;
         //Need a for loop to loop through the array 
         for (var i = 0; i < notesObject.length; i++) {
             if (notesObject[i].id === parseInt(req.params.id)) {
