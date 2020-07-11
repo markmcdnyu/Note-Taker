@@ -21,6 +21,21 @@ module.exports = function (app) {
 
     //API POST for notes in the database file
     app.post("/api/notes", function (req, res) {
+        // for POSt I will need an empty array variable,
+        let notesObject = [];
+
+        // variable for the data inside the above array,
+        let data = fs.readFileSync(path.resolve(database, "db.json"), "utf8");
+        notesObject = JSON.parse(data);
+
+        // assign that new object from the POST, an ID, TITLE, and TEST
+        let newNoteObject = {
+            id: idCounter,
+            title: req.body.title,
+            text: req.body.text,
+        };
+
+        //Need to add the note to the to the notes Object variable
 
     })
 
