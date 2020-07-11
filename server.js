@@ -7,10 +7,12 @@ var app = express();
 //Set the PORT needed to use
 var PORT = process.env.PORT || 8080;
 
-// More here but will add the PORT listener now
+// middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-
-
+// import the webiste's style
+app.use(express.static("Develop/public"));
 
 
 
