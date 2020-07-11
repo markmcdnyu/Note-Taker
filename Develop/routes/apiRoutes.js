@@ -35,7 +35,21 @@ module.exports = function (app) {
             text: req.body.text,
         };
 
-        //Need to add the note to the to the notes Object variable
+        //Need to add the note to the to the notes Object variable (push)
+        notesObject.push(newNoteObject);
+
+        //Need to write to the files (fs.write to file)
+        fs.writeFileSync(
+            path.resolve(database, "db.json"),
+            JSON.stringify(notesObject),
+            function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            }
+        );
+
+        //Need to return the new note and then increase the counter by 1 for special id purpose 
 
     })
 
